@@ -1,13 +1,12 @@
 const express = require("express");
-
+const path = require('path');
 const app = express();
 
+//middlewares
+app.use(express.static('public'));
+
 app.get("/", (req, res) => {
-  let user = {
-    name: "Hilal",
-    lName: "Öztürk"
-  }
-  res.send(user)
+  res.sendFile(path.resolve(__dirname, 'temp/index.html'))
 })
 
 const port = 3000;
