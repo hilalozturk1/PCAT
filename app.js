@@ -8,6 +8,9 @@ app.set("view engine", "ejs");
 
 //middlewares
 app.use(express.static("public"));
+  // body parser middleware
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 // routes
 app.get("/", (req, res) => {
@@ -19,6 +22,12 @@ app.get("/about", (req, res) => {
 });
 app.get("/add", (req, res) => {
   res.render("add");
+});
+
+//the data that getting from form
+app.post("/photos", (req, res) => {
+  console.log('req.body :>> ', req.body);
+  res.redirect("/")
 });
 
 const port = 3000;
